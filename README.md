@@ -136,7 +136,7 @@ curl "http://localhost:8000/movies?genre=Action&limit=10"
 curl "http://localhost:8000/health"
 ```
 
-Project Structure
+## Project Structure
 ```
 recommendation-system/
 ├── rec_sys_data.py          # Data generation
@@ -150,4 +150,10 @@ recommendation-system/
 ├── ratings.csv             # Generated data
 └── evaluation_results.png  # Generated plots
 ```
+
+## Screenshots
+<img width="2788" height="1350" alt="image" src="https://github.com/user-attachments/assets/e5a9e0eb-bf0c-479f-a543-3e589e241355" />
+<img width="2624" height="1426" alt="image" src="https://github.com/user-attachments/assets/2168b8eb-4090-4e6b-8fcd-2a14cbd4183f" />
+<img width="2642" height="1092" alt="image" src="https://github.com/user-attachments/assets/09ce833e-ec2f-4f6c-8356-275884406439" />
+
 
