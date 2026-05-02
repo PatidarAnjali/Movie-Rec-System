@@ -1,6 +1,6 @@
 ### Recommendation Model
 
-An AI/ML recommendation system built w/ Python, featuring multiple recommendation algorithms & a FastAPI backend.
+An AI/ML movie recommendation system built with Python, featuring a FastAPI backend and multiple recommendation approaches (item similarity + matrix factorization).
 
 ## Features
 - Multiple recommendation algorithms
@@ -23,16 +23,16 @@ An AI/ML recommendation system built w/ Python, featuring multiple recommendatio
 - Virtual environment (recommended) 
 
 ## Quick start
-1. Install dependencises
+1. Install dependencies
 ```
 # create virtual environment
-python -m venv venv
+python3 -m venv .venv
 
 # activate virtual environment 
 # on Windows:
-venv\Scripts\activate
+.venv\Scripts\activate
 # on macOS/Linux:
-source venv/bin/activate
+source .venv/bin/activate
 
 # install packages
 pip install -r requirements.txt
@@ -41,43 +41,19 @@ pip install -r requirements.txt
 2. Generate sample data
 ```
 python rec_sys_data.py
-<!-- 
-This creates three CSV files:
-    - movies.csv - 100 movies with genres, years, ratings
-    - users.csv - 50 users with age and preferences
-    - ratings.csv - ~1000 user-movie ratings 
--->
 ```
 
 3. Train and Test Models
 ```
 python rec_sys_models.py
-<!--
-This will:
-- Train all four models
-- Generate recommendations for a test user
-- Display results in console
--->
 ```
 
-4. Evaluate Models
-```
-python rec_sys_evaluation.py
-<!-- 
-This will:
-- Split data into train/test sets
-- Evaluate all models
-- Generate comparison metrics
-- Create visualization plot: (evaluation_results.png)
--->
-```
-
-5. Start API Server
+4. Start API Server
 ```
 python rec_sys_api.py
 
 # Or using uvicorn directly:
-bashuvicorn rec_sys_api:app --reload --host 0.0.0.0 --port 8000
+uvicorn api:app --reload --host 0.0.0.0 --port 8000
 ```
 
 API will be available at: http://localhost:8000
@@ -93,13 +69,12 @@ POST /recommend
 {
   "user_id": 5,
   "n": 10,
-  "model_type": "hybrid"
 }
 ```
 
 Get All Movies
 ```
-GET /movies?genre=Action&limit=20
+GET /movies?limit=20
 ```
 
 Get User Details
@@ -119,7 +94,7 @@ POST /ratings
 
 System Stats
 ```
-bashGET /stats
+GET /stats
 ```
 
 ## Testing with cURL
@@ -136,18 +111,24 @@ curl "http://localhost:8000/movies?genre=Action&limit=10"
 curl "http://localhost:8000/health"
 ```
 
+## Screenshot proof ideas
+- Swagger UI running: `http://localhost:8000/docs`
+- Example API response: run the cURL recommend call and screenshot the JSON output
+- Terminal proof: screenshot `python rec_sys_models.py` output
+
 Project Structure
 ```
 recommendation-system/
 ├── rec_sys_data.py          # Data generation
 ├── rec_sys_models.py        # ML models implementation
-├── rec_sys_evaluation.py    # Model evaluation
 ├── rec_sys_api.py          # FastAPI service
+├── generate_data.py         # Data generator (implementation)
+├── models.py                # Recommenders (implementation)
+├── api.py                   # FastAPI app (implementation)
 ├── requirements.txt         # Python dependencies
 ├── README.md               # This file
 ├── movies.csv              # Generated data
 ├── users.csv               # Generated data
 ├── ratings.csv             # Generated data
-└── evaluation_results.png  # Generated plots
 ```
 
