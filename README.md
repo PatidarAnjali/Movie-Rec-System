@@ -38,10 +38,10 @@ python3 api.py
 Visit `http://localhost:8000/docs` for interactive API documentation.
 
 ## Features
-- Collaborative Filtering (item similarity)
-- Matrix Factorization (SVD via TruncatedSVD)
-- RESTful API with Swagger docs
-- Real-time recommendations
+- collaborative filtering (item similarity)
+- matrix factorization (SVD via TruncatedSVD)
+- RESTful API w/ swagger docs
+- real-time recommendations
 
 ## API Endpoints
 - `POST /recommend` - get personalized recommendations
@@ -58,20 +58,20 @@ Visit `http://localhost:8000/docs` for interactive API documentation.
 ## Project Structure
 ```text
 recommendation-model/
-├── api.py                  # FastAPI server w/ recommendation endpoints
-├── models.py               # Recommenders (item-similarity + matrix factorization)
-├── generate_data.py        # Synthetic dataset generator
-├── test_system.py          # Testing script for validation
-├── rec_sys_api.py          # Convenience runner (uvicorn -> api:app)
-├── rec_sys_models.py       # Convenience runner for model smoke test
-├── rec_sys_data.py         # Convenience runner for data generation
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
-├── .gitignore              # Git ignore rules
+├── api.py # FastAPI server w/ recommendation endpoints
+├── models.py # recommenders (item-similarity + matrix factorization)
+├── generate_data.py # synthetic dataset generator
+├── test_system.py # testing script for validation
+├── rec_sys_api.py # convenience runner (uvicorn -> api:app)
+├── rec_sys_models.py # convenience runner for model smoke test
+├── rec_sys_data.py # convenience runner for data generation
+├── requirements.txt # python dependencies
+├── README.md # project documentation
+├── .gitignore # git ignore rules
 │
-├── movies.csv              # Generated movie data
-├── users.csv               # Generated user data
-└── ratings.csv             # Generated ratings data
+├── movies.csv #generated movie data
+├── users.csv # generated user data
+└── ratings.csv # generated ratings data
 ```
 
 ## Key Endpoints
@@ -84,17 +84,17 @@ POST /recommend
 }
 ```
 
-Get All Movies
+Get All movies
 ```text
 GET /movies?limit=20
 ```
 
-Get User Details
+Get user details
 ```text
 GET /users/5
 ```
 
-Add Rating
+Add rating
 ```json
 POST /ratings
 {
@@ -104,7 +104,7 @@ POST /ratings
 }
 ```
 
-System Stats
+System stats
 ```text
 GET /stats
 ```
@@ -123,22 +123,17 @@ curl "http://localhost:8000/movies?limit=10"
 curl "http://localhost:8000/health"
 ```
 
-## Screenshot proof ideas
-- Swagger UI running: `http://localhost:8000/docs`
-- Example API response: run the cURL recommend call and screenshot the JSON output
-- Terminal proof: screenshot `python models.py` (or `python rec_sys_models.py`) output
+## Screenshot
+- swagger UI running: `http://localhost:8000/docs`
+<img width="1153" height="744" alt="Screenshot 2026-05-02 at 4 41 47 PM" src="https://github.com/user-attachments/assets/5a8012ee-79c5-4670-9349-c258b16b66c9" />
+<img width="729" height="266" alt="Screenshot 2026-05-02 at 4 42 23 PM" src="https://github.com/user-attachments/assets/80b1df6d-8ef9-44e3-850d-2c650bd6599c" />
 
 ### File Descriptions
 - **`api.py`**: FastAPI REST API server with endpoints for recommendations, movies, and health checks
-- **`models.py`**: Implementation of recommendation algorithms
-  - `SimpleRecommender`: Item-based collaborative filtering
+- **`models.py`**: implementation of recommendation algorithms
+  - `SimpleRecommender`: item-based collaborative filtering
   - `MatrixFactorization`: SVD-based factorization model
-- **`generate_data.py`**: Creates synthetic movie dataset with realistic rating patterns
-- **`test_system.py`**: Automated testing for data, models, and API
-- **`requirements.txt`**: All Python package dependencies
-
-## Screenshots
-<img width="2788" height="1350" alt="image" src="https://github.com/user-attachments/assets/e5a9e0eb-bf0c-479f-a543-3e589e241355" />
-<img width="2624" height="1426" alt="image" src="https://github.com/user-attachments/assets/2168b8eb-bf0c-479f-a543-3e589e241355" />
-<img width="2642" height="1092" alt="image" src="https://github.com/user-attachments/assets/09ce833e-ec2f-4f6c-8356-275884406439" />
+- **`generate_data.py`**: creates synthetic movie dataset with realistic rating patterns
+- **`test_system.py`**: automated testing for data, models, and API
+- **`requirements.txt`**: all python package dependencies
 
